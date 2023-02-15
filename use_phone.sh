@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ip=`adb shell ip -f inet addr show | egrep -o '192.*/' | sed 's/.$//'`
+ip=`adb shell ip -f inet addr show | egrep -o '192.*/' -m 1 | sed 's/.$//'`
 if [ $ip != "adb: no devices/emulators found" ]
 then  
 	echo $ip>~/code_repo/bash_scripts/ip.txt
@@ -8,7 +8,8 @@ then
 	adb connect $ip:5555
 	
 else
-	file="ip.txt"
+  echo "over here"
+	file="/home/pranil/code_repo/bash_scripts/ip.txt"
 	while read -r line; do
 		adb connect $line:5555
 	done <$file 
