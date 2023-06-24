@@ -1,4 +1,7 @@
 #!/usr/bin/bash
+
+#for obsidian notes
+
 cd ~/all_synced/ob_notes 
 
 git_st=`git status`
@@ -14,4 +17,18 @@ if ! [[ "$git_st" == *".obsidian/workspace"* && $num -eq 1 ]]; then
    echo \n >> $logs_path 
 fi
 
+#for my configs
+
+
+cd ~/.config 
+
+git_st=`git status`
+logs_path="/home/pranil/code_repo/bash_scripts/logs/config_sync_logs.log"
+input="Backup: "`date`
+echo $input >> $logs_path
+git status >> $logs_path 
+git add .
+git commit -m"$input"
+git push >> $logs_path 
+echo \n >> $logs_path 
 

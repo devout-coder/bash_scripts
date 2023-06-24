@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-curl https://doneify.onrender.com
+/usr/bin/curl https://doneify.onrender.com
 
 input="conned render at: "`date`
 logs_path="/home/pranil/code_repo/bash_scripts/logs/con_render_logs.log"
